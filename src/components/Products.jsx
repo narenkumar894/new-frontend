@@ -36,63 +36,69 @@ export default function Products({ setCart, cart }) {
   return (
     <div>
       {/* Page Title */}
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">
-        All Products
-      </h2>
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          🛍️ Our Amazing Products
+        </h2>
+        <p className="text-gray-600 text-lg">Discover our curated collection of premium items</p>
+      </div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {products.map((p) => (
           <div
             key={p._id}
-            className="bg-white rounded-xl shadow-md hover:shadow-lg transition p-4 flex flex-col"
+            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 p-6 flex flex-col border border-gray-100 group"
           >
             {/* Product Image */}
-            <img
-              src={p.image}
-              alt={p.name}
-              className="h-48 w-full object-cover rounded-lg mb-4"
-            />
+            <div className="relative overflow-hidden rounded-xl mb-4">
+              <img
+                src={p.image}
+                alt={p.name}
+                className="h-48 w-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute top-2 right-2 bg-gradient-to-r from-pink-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                {p.rating} ⭐
+              </div>
+            </div>
 
             {/* Product Info */}
-            <h3 className="text-lg font-semibold text-gray-800">
+            <h3 className="text-lg font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
               {p.name}
             </h3>
 
-            <p className="text-blue-600 font-bold mt-1">
+            <p className="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
               ₹{p.price}
             </p>
 
-            <p className="text-sm text-gray-500 mt-1">
-              Rating: {p.rating} ⭐
-            </p>
-
-            <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+            <p className="text-sm text-gray-600 mt-2 line-clamp-3 flex-grow">
               {p.description}
             </p>
 
             {/* Actions */}
-            <div className="mt-auto pt-4 flex flex-wrap gap-2">
-              <Link
-                to={`/product/${p._id}`}
-                className="px-4 py-2 text-sm rounded-md border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white transition"
-              >
-                View
-              </Link>
+            <div className="mt-6 flex flex-col gap-3">
+              <div className="flex gap-2">
+                <Link
+                  to={`/product/${p._id}`}
+                  className="flex-1 px-4 py-2 text-sm rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-200 text-center font-medium"
+                >
+                  👁️ View Details
+                </Link>
 
-              <button
-                onClick={() => addToCart(p)}
-                className="px-4 py-2 text-sm rounded-md bg-green-600 text-white hover:bg-green-700 transition"
-              >
-                Add to Cart
-              </button>
+                <button
+                  onClick={() => addToCart(p)}
+                  className="flex-1 px-4 py-2 text-sm rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 transition-all duration-200 font-medium"
+                >
+                  🛍️ Add to Cart
+                </button>
+              </div>
 
               {/* Admin Action */}
               <button
                 onClick={() => deleteProduct(p._id)}
-                className="px-4 py-2 text-sm rounded-md bg-red-500 text-white hover:bg-red-600 transition"
+                className="w-full px-4 py-2 text-sm rounded-full bg-gradient-to-r from-red-500 to-pink-500 text-white hover:from-red-600 hover:to-pink-600 transition-all duration-200 font-medium"
               >
-                Delete
+                🗑️ Delete Product
               </button>
             </div>
           </div>

@@ -22,40 +22,40 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-380 flex flex-col bg-gray-100 text-gray-800">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header / Navbar */}
-      <header className="bg-white shadow-md">
+      <header className="bg-white/80 backdrop-blur-md shadow-lg border-b border-blue-100">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/home" className="text-2xl font-bold text-blue-600">
-            MERN Ecommerce
+          <Link to="/home" className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            🛍️ ShopHub
           </Link>
 
-          <nav className="flex items-center gap-6 text-sm font-medium">
+          <nav className="flex items-center gap-8 text-sm font-medium">
             <Link
               to="/home"
-              className="hover:text-blue-600 transition"
+              className="text-gray-700 hover:text-blue-600 transition-all duration-200 hover:scale-105"
             >
               Home
             </Link>
             <Link
               to="/products"
-              className="hover:text-blue-600 transition"
+              className="text-gray-700 hover:text-blue-600 transition-all duration-200 hover:scale-105"
             >
               Products
             </Link>
             <Link
               to="/addproduct"
-              className="hover:text-blue-600 transition"
+              className="text-gray-700 hover:text-blue-600 transition-all duration-200 hover:scale-105"
             >
               Add Product
             </Link>
 
             <Link
               to="/cart"
-              className="hover:text-blue-600 transition"
+              className="relative text-gray-700 hover:text-blue-600 transition-all duration-200 hover:scale-105"
             >
-              Cart
-              <span className="ml-1 inline-flex items-center justify-center rounded-full bg-blue-600 px-2 text-xs text-white">
+              🛒 Cart
+              <span className="absolute -top-2 -right-2 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-red-500 px-2 py-1 text-xs text-white shadow-lg">
                 {cart.length}
               </span>
             </Link>
@@ -63,14 +63,14 @@ function App() {
             {localStorage.getItem("user") ? (
               <button
                 onClick={logout}
-                className="rounded-md bg-red-500 px-4 py-1.5 text-white hover:bg-red-600 transition"
+                className="rounded-full bg-gradient-to-r from-red-500 to-pink-500 px-6 py-2 text-white hover:shadow-lg transition-all duration-200 hover:scale-105"
               >
                 Logout
               </button>
             ) : (
               <Link
                 to="/login"
-                className="rounded-md bg-blue-600 px-4 py-1.5 text-white hover:bg-blue-700 transition"
+                className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-white hover:shadow-lg transition-all duration-200 hover:scale-105"
               >
                 Login
               </Link>
@@ -80,7 +80,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-6 py-8">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-6 py-12">
         <Routes>
           <Route
             path="/products"
@@ -113,9 +113,15 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t">
-        <div className="max-w-7xl mx-auto px-6 py-4 text-center text-sm text-gray-500">
-          © 2025 MERN Ecommerce Project. All rights reserved.
+      <footer className="bg-gradient-to-r from-gray-800 to-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="text-center">
+            <h3 className="text-xl font-bold mb-2">🛍️ ShopHub</h3>
+            <p className="text-gray-300 mb-4">Your one-stop destination for amazing products</p>
+            <p className="text-sm text-gray-400">
+              © 2025 ShopHub. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
